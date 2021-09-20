@@ -35,6 +35,9 @@ describe('GetDetailThreadUseCase', () => {
     mockCommentRepository.getCommentbyThreadId = jest
       .fn()
       .mockImplementation(() => Promise.resolve());
+    mockCommentRepository.getTotalLike = jest
+      .fn()
+      .mockImplementation(() => Promise.resolve());
     mockUserRepository.getUsernameByThreadIdFromComment = jest
       .fn()
       .mockImplementation(() => Promise.resolve());

@@ -8,6 +8,7 @@ const RepliesTableTestHelper = require('../../../../tests/RepliesTableTestHelper
 const LikeTableTestHelper = require('../../../../tests/LikeTableTestHelper');
 const Helper = require('../../../../tests/Helper');
 const createServer = require('../createServer');
+jest.useRealTimers();
 
 describe('/threads endpoint', () => {
   afterAll(async () => {
@@ -153,8 +154,8 @@ describe('/threads endpoint', () => {
 
   describe('when GET /threads/{threadId}', () => {
     it('should response 200 and detail thread', async () => {
+      jest.setTimeout(10 * 1000);
       // Arrange
-
       await UsersTableTestHelper.addUser({
         id: 'user-222',
         username: 'dicoodingg',
@@ -251,6 +252,6 @@ describe('/threads endpoint', () => {
       expect(response.statusCode).toEqual(200);
       expect(responseJson.status).toEqual('success');
       expect(responseJson.data.thread).toBeDefined();
-    });
+    }, 10000);
   });
 });
