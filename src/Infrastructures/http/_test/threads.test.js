@@ -20,6 +20,7 @@ describe('/threads endpoint', () => {
     await ThreadsTableTestHelper.cleanTable();
     await RepliesTableTestHelper.cleanTable();
     await LikeTableTestHelper.cleanTable();
+    jest.useRealTimers();
   });
 
   describe('when POST /threads', () => {
@@ -152,9 +153,10 @@ describe('/threads endpoint', () => {
   });
 
   describe('when GET /threads/{threadId}', () => {
+    jest.useFakeTimers('legacy');
     it('should response 200 and detail thread', async () => {
+      jest.useFakeTimers('legacy');
       // Arrange
-
       await UsersTableTestHelper.addUser({
         id: 'user-222',
         username: 'dicoodingg',
