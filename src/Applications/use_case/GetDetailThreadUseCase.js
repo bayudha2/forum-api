@@ -33,8 +33,7 @@ class GetDetailThreadUseCase {
     const totalLike = await this._commentRepository.getTotalLike(ids.thread_id);
 
     if (comments === undefined) {
-      const comments = [];
-      return comments;
+      return [];
     }
 
     const detailComment = new DetailComment();

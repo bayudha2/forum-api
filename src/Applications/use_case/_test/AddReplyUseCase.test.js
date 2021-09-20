@@ -30,12 +30,8 @@ describe('AddReplyUseCase', () => {
     const mockReplyRepository = new ReplyRepository();
 
     // Mocking
-    mockThreadRepository.checkThread = jest
-      .fn()
-      .mockImplementation(() => Promise.resolve());
-    mockCommentRepository.checkComment = jest
-      .fn()
-      .mockImplementation(() => Promise.resolve());
+    mockThreadRepository.checkThread = jest.fn(() => Promise.resolve());
+    mockCommentRepository.checkComment = jest.fn(() => Promise.resolve());
     mockReplyRepository.addReply = jest
       .fn()
       .mockImplementation(() => Promise.resolve(expectedAddedReply));
