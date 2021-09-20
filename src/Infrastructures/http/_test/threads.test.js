@@ -10,6 +10,9 @@ const Helper = require('../../../../tests/Helper');
 const createServer = require('../createServer');
 
 describe('/threads endpoint', () => {
+  beforeEach(() => {
+    jest.setTimeout(10000);
+  });
   afterAll(async () => {
     await pool.end();
   });
