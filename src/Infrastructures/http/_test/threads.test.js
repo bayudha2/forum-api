@@ -10,9 +10,6 @@ const Helper = require('../../../../tests/Helper');
 const createServer = require('../createServer');
 
 describe('/threads endpoint', () => {
-  beforeEach(() => {
-    jest.setTimeout(10000);
-  });
   afterAll(async () => {
     await pool.end();
   });
@@ -23,7 +20,6 @@ describe('/threads endpoint', () => {
     await ThreadsTableTestHelper.cleanTable();
     await RepliesTableTestHelper.cleanTable();
     await LikeTableTestHelper.cleanTable();
-    jest.useRealTimers();
   });
 
   describe('when POST /threads', () => {
@@ -156,9 +152,8 @@ describe('/threads endpoint', () => {
   });
 
   describe('when GET /threads/{threadId}', () => {
-    jest.useFakeTimers('legacy');
     it('should response 200 and detail thread', async () => {
-      jest.useFakeTimers('legacy');
+      jest.setTimeout(30000);
       // Arrange
       await UsersTableTestHelper.addUser({
         id: 'user-222',
