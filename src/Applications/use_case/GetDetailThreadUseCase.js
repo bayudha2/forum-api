@@ -30,15 +30,13 @@ class GetDetailThreadUseCase {
       ids.thread_id
     );
 
-    const totalLike = await this._commentRepository.getTotalLike(ids.thread_id);
-
     if (comments === undefined) {
       const comments = [];
       return comments;
     }
 
     const detailComment = new DetailComment();
-    await detailComment._insertCountLike(comments, totalLike);
+
     await detailComment._checkDeleteComment(comments);
     const detailedComment = await detailComment._sortDate(comments);
 
