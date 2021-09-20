@@ -41,7 +41,7 @@ class GetDetailThreadUseCase {
 
     await detailComment._checkDeleteComment(comments);
     const detailedComment = await detailComment._sortDate(comments);
-
+    await detailComment._insertCountLike(comments, totalLike);
     const commentUsername =
       await this._userRepository.getUsernameByThreadIdFromComment(
         ids.thread_id
