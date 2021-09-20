@@ -7,8 +7,7 @@ class AddThreadUseCase {
 
   execute(useCasePayload, credentialId) {
     const newThread = new NewThread(useCasePayload);
-    const accessId = credentialId;
-    return this._threadRepository.addThread(newThread, accessId);
+    return this._threadRepository.addThread(newThread, credentialId);
   }
 }
 

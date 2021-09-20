@@ -34,13 +34,12 @@ class ThreadsHandler {
 
     const thread = await this._getDetailThreadUseCase.execute(ids);
 
-    const response = h.response({
+    return {
       status: 'success',
       data: {
         thread,
       },
-    });
-    return response;
+    };
   }
 }
 

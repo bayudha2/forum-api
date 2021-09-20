@@ -380,7 +380,7 @@ describe('/comments endpoint', () => {
 
       // Action
       const response = await server.inject({
-        url: `/threads/${threadId.id}/comments/${''}`,
+        url: `/threads/${threadId.id}/comments/`,
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${accessToken}`,
